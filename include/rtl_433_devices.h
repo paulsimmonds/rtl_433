@@ -201,7 +201,7 @@
     DECL(markisol) \
     DECL(govee) \
     DECL(cmr113) \
-
+    DECL(oil_proteus) \
     /* Add new decoders here. */
 
 #define DECL(name) extern r_device name;
