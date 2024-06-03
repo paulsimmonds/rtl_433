@@ -71,17 +71,18 @@ static int oil_proteus_callback(r_device *decoder, bitbuffer_t *bitbuffer)
 	// Think temperature may be in celcius
 	maybetemp = b[5];
 	temperature = (double)(maybetemp) / 4.0;
-	if (flags & 1)
+	if (flags & 1) {
 	    // When binding, the countdown counts up from 0x51 to 0x5a
 	    // (as long as you hold the magnet to it for long enough)
 	    // before the device ID changes. The receiver unit needs
 	    // to receive this *strongly* in order to change its
 	    // allegiance.
 	    binding_countdown = b[6];
-	else
-	    // A depth reading of zero indicates no reading. Even with
-	    // the sensor flat down on a table, it still reads about 13.
-	    depth = b[6];
+	}
+	
+	// A depth reading of zero indicates no reading. Even with
+	// the sensor flat down on a table, it still reads about 13.
+	depth = b[6];
 		
 	data = data_make(
 			 "model", "", DATA_STRING, "Oil-Proteus",
